@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src ="work.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="theme-container">
+            <div class="theme-grid" aria-label="Theme gallery">
+                <div class="theme-card" data-theme="default" onclick="setTheme('default')">
+                    <div class="theme-preview preview-default" aria-hidden="true"></div>
+                    <div class="theme-label">Light</div>
+                </div>
+                <div class="theme-card" data-theme="dark" onclick="setTheme('dark')">
+                    <div class="theme-preview preview-dark" aria-hidden="true"></div>
+                    <div class="theme-label">Dark</div>
+                </div>
+                <div class="theme-card" data-theme="forest" onclick="setTheme('forest')">
+                    <div class="theme-preview preview-forest" aria-hidden="true"></div>
+                    <div class="theme-label">Forest</div>
+                </div>
+                <div class="theme-card" data-theme="ocean" onclick="setTheme('ocean')">
+                    <div class="theme-preview preview-ocean" aria-hidden="true"></div>
+                    <div class="theme-label">Ocean</div>
+                </div>
+                <div class="theme-card" data-theme="purple" onclick="setTheme('purple')">
+                    <div class="theme-preview preview-purple" aria-hidden="true"></div>
+                    <div class="theme-label">Purple</div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar sidebar-left">
+            <h2>Controls</h2>
+            
+            
+            
+            <div class="player-input-group">
+                <label>White Player:</label>
+                <input type="text" class="player-name" id="whiteName" placeholder="Enter White's name" value="White">
+            </div>
+            
+            <div class="player-input-group">
+                <label>Black Player:</label>
+                <input type="text" class="player-name" id="blackName" placeholder="Enter Black's name" value="Black">
+            </div>
+            
+            <div class="time-controls" id="timeControls">
+                <button class="time-btn active" onclick="setTimeControl(300, 0)">5 min</button>
+                <button class="time-btn" onclick="setTimeControl(180, 1)">3+1</button>
+                <button class="time-btn" onclick="setTimeControl(300, 1)">5+1</button>
+                <button class="time-btn" onclick="setTimeControl(300, 2)">5+2</button>
+                <button class="time-btn" onclick="setTimeControl(600, 1)">10+1</button>
+                <button class="time-btn" onclick="setTimeControl(600, 3)">10+3</button>
+                <button class="time-btn" onclick="setTimeControl(900, 3)">15+3</button>
+                <button class="time-btn" onclick="setTimeControl(1800, 5)">30+5</button>
+                <button class="time-btn" onclick="setTimeControl(Infinity, 0)">∞</button>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn-reset" onclick="resetGame()">New Game</button>
+                <button class="btn-undo" onclick="undoMove()" id="undoBtn">Undo</button>
+            </div>
+            
+            <div class="game-info" style="margin-top: 20px;">
+                <div class="info-row">
+                    <label>Move:</label>
+                    <span id="moveCount">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="board-container">
+            <div class="timer-column">
+                <div class="timer black" id="blackTimer">5:00</div>
+            </div>
+            <div class="chess-board" id="board"></div>
+            <div class="timer-column">
+                <div class="timer white active" id="whiteTimer">5:00</div>
+            </div>
+        </div>
+        
+        <div class="sidebar sidebar-right">
+            <h2>Game Status</h2>
+            
+            <div class="turn-indicator" id="turnIndicator">White's Turn</div>
+            
+            <div class="status" id="status"></div>
+            
+            <h3 style="color: #333; margin-top: 20px; font-size: 14px;">Move History</h3>
+            <div class="moves-list" id="movesList"></div>
+            
+            <div class="captured-pieces">
+                <h4>White Captured:</h4>
+                <div class="pieces-display" id="whiteCaptured"></div>
+            </div>
+            
+            <div class="captured-pieces">
+                <h4>Black Captured:</h4>
+                <div class="pieces-display" id="blackCaptured"></div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
